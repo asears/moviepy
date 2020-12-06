@@ -41,10 +41,12 @@ def test_audioclip():
 
     clip = AudioFileClip(os.path.join(TMP_DIR, "audioclip.mp3"))
 
-    # TODO Write better tests; find out why the following fail
-    # assert clip.duration == 2
-    # assert clip.fps == 22050
-    # assert clip.reader.bitrate == 16
+    # This results in 2.06 instead of 2.
+    assert clip.duration > 2
+    # This was previously 22050
+    assert clip.fps == 44100
+    # This was previously 16
+    assert clip.reader.bitrate == 32
     close_all_clips(locals())
 
 
